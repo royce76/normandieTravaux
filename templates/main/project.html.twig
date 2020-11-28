@@ -1,0 +1,63 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Tâches{% endblock %}
+
+{% block main %}
+  <div class="row">
+      <div class="col-10 mx-auto my-3 text-center">
+      {% for message in app.flashes('success') %}
+          <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+      {% endfor %}
+      </div>
+      {% for project in projects %}
+        <article class="card my-4 col-10 mx-auto" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.name}}</h5>
+            <p class="card-text">Date limite : {{ project.deadline|date('d-m-Y H:i:s') }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ project.description}}</li>
+            <li class="list-group-item">Créer le : {{ project.creationDate|date('d-m-Y') }}</li>
+            <li class="list-group-item">{{ project.status }}</li>
+          </ul>
+          <div class="d-flex justify-content-around align-items-center ">
+            <div class="card-body">
+              <a class="btn btn-info" href="{{ path('app_home') }}">Retour</a>
+              <a class="btn btn-info" href="{{ path('add_task', {id:project.id})}}">Nouvelle tâche</a>
+              <a class="btn btn-info" href="{{ path('update_project', {id:project.id})}}">Modifier</a>
+              <a class="btn btn-info" href="{{ path('project_delete', {id:project.id})}}">Supprimer</a>
+              <a class="btn btn-info" href="{{ path('project_archive', {id:project.id})}}">Archiver</a>
+            </div>
+          </div>
+        </article>
+        {% for task in project.tasks %}
+          {% if task.status == "En cours" %}
+            <article class="card my-4 col-10 mx-auto bg-danger" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Tâche : {{ task.name }} du {{ task.creationDate|date('d-m-Y') }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Deadline le {{ task.deadline|date('d-m-Y H:i:s') }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ task.status }}</h6>
+                <p class="card-text">{{ task.description}}</p>
+                <a class="btn btn-info" href="{{ path('update_task', {id:task.id})}}">Modifier</a>
+                <a class="btn btn-info" href="{{ path('task_delete', {id:task.id})}}">Supprimer</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </article>
+          {% else %}
+            <article class="card my-4 col-10 mx-auto bg-success" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Tâche : {{ task.name }} du {{ task.creationDate|date('d-m-Y') }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Deadline le {{ task.deadline|date('d-m-Y H:i:s') }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ task.status }}</h6>
+                <p class="card-text">{{ task.description}}</p>
+                <a class="btn btn-info" href="{{ path('update_task', {id:task.id})}}">Modifier</a>
+                <a class="btn btn-info" href="{{ path('task_delete', {id:task.id})}}">Supprimer</a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Projet archivé{% endblock %}
+
+{% block main %}
+  <div class="row">
+  {# {% for projects in listArchives.projectArchive %}
+        <p>{{ projects.name}}</p>
+  {% endfor %} #}
+
+      {% for project in listArchives.projectArchive %}
+        <article class="card my-4 col-10 mx-auto" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.name}}</h5>
+            <p class="card-text">Date limite : {{ project.deadline|date('d-m-Y H:i:s') }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ project.description}}</li>
+            <li class="list-group-item">Créer le : {{ project.creationDate|date('d-m-Y') }}</li>
+            <li class="list-group-item">{{ project.status }}</li>
+          </ul>
+          <div class="d-flex justify-content-around align-items-center ">
+            <div class="card-body">
+              <a class="btn btn-info" href="{{ path('app_archive') }}">Retour</a>
+              <a class="btn btn-info" href="{{ path('app_desarchive', {id:listArchives.id}) }}">Désarchiver</a>
+            </div>
+          </div>
+        </article>
+        {% for task in project.tasks %}
+          {% if task.status == "En cours" %}
+            <article class="card my-4 col-10 mx-auto bg-danger" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Tâche : {{ task.name }} du {{ task.creationDate|date('d-m-Y') }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Deadline le {{ task.deadline|date('d-m-Y H:i:s') }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ task.status }}</h6>
+                <p class="card-text">{{ task.description}}</p>
+              </div>
+            </article>
+          {% else %}
+            <article class="card my-4 col-10 mx-auto bg-success" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Tâche : {{ task.name }} du {{ task.creationDate|date('d-m-Y') }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Deadline le {{ task.deadline|date('d-m-Y H:i:s') }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ task.status }}</h6>
+                <p class="card-text">{{ task.description}}</p>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+  </div>
+{% endblock %}

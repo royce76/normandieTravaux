@@ -1,0 +1,36 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="col-10 mx-auto my-4">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
+      <form method="post">
+          {% if error %}
+              <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+          {% endif %}
+
+          <h3 class="h3 mb-3 font-weight-normal text-center">Connexion</h3>
+          <div class="form-group">
+            <label for="inputEmail">Email :</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Mot de passe :</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" required>
+          </div>
+
+          <input type="hidden" name="_csrf_token"
+                 value="{{ csrf_token('authenticate') }}"
+          >
+
+          <button class="btn btn-lg btn-primary" type="submit">
+              Connexion
+          </button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

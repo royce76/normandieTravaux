@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+  {% include 'inc/nav.html.twig' %}
+  {% include 'inc/header.html.twig' %}
+    <div class="container">
+      {% block main %}
+      {% endblock %}
+    </div>
+  {% include 'inc/footer.html.twig' %}
+{% endblock %}

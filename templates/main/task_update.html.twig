@@ -1,0 +1,44 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Modifier tâche{% endblock %}
+
+{% block main %}
+    <div class="row">
+      <div class="col-10 mx-auto my-4">
+
+        <h3>Mofifier tâche</h3>
+
+        {{ form_start(taskForm, {'attr': {'novalidate': 'novalidate'}}) }}
+            <div class="form-group">
+              {{ form_row(taskForm.name, {
+                  label: 'Intitulé :',
+                  attr: {'class': 'form-control my-2'}
+              }) }}
+            </div>
+            <div class="form-group">
+              {{ form_row(taskForm.description, {
+                  label: 'Description :',
+                  attr: {'class': 'form-control my-2'}
+              }) }}
+            </div>
+            <div class="form-group">
+              {{ form_row(taskForm.deadline, {
+                  label: 'Deadline :',
+                  attr: {'class': 'my-2'}
+              }) }}
+            </div>
+            <div class="form-group">
+              {{ form_row(taskForm.status, {
+                  label: 'Status :',
+                  attr: {'class': 'my-2'}
+              }) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Modifier</button>
+        {{ form_end(taskForm) }}
+        <div class="my-2">
+          <a class="btn btn-info" href="{{ path('app_project', {id:project.id})}}">Retour</a>
+        </div>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="my-4 col-10 mx-auto">
+      <h3 class="text-center">Accueil</h3>
+
+      {% for message in app.flashes('success') %}
+          <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+      {% endfor %}
+
+    </div>
+    {% for project in projects %}
+      <article class="card my-4 col-10 mx-auto" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.name}}</h5>
+          <p class="card-text">Date limite : {{ project.deadline|date('d-m-Y H:i:s') }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ project.description}}</li>
+          <li class="list-group-item">Créer le : {{ project.creationDate|date('d-m-Y') }}</li>
+          <li class="list-group-item">{{ project.status }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{{ path('app_project', {id:project.id})}}" class="btn btn-primary">Détails</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+{% endblock %}

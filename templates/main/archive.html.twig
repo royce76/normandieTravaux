@@ -1,0 +1,24 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Archive{% endblock %}
+
+{% block main %}
+  <div class="row">
+    <div class="my-4 col-10 mx-auto">
+      <h3 class="text-center">Archive</h3>
+
+      {% for message in app.flashes('success') %}
+          <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+      {% endfor %}
+
+      {% for archive in listArchive %}
+        {% for project in archive.projectArchive %}
+            <ul>
+              <li><a class="btn btn-info" href="{{ path('app_archive_id', {id:archive.id})}}">{{project.name}}</a></li>
+            </ul>
+        {% endfor %}
+      {% endfor %}
+
+    </div>
+  </div>
+{% endblock %}
