@@ -32,9 +32,10 @@ class MainController extends AbstractController
     public function index(ProjectRepository $projectRepository): Response
     {
       $user = $this->getUser();
-
+      $projects = $projectRepository->getProjectsUser($user->getId());
+      dump($projects);
       return $this->render('main/index.html.twig', [
-           'projects' => $projectRepository->getProjectsUser($user->getId()),
+           'projects' => $projects,
        ]);
     }
 
