@@ -23,11 +23,11 @@
             <h5 class="card-title">{{ project.name}}</h5>
           </div>
           <div class="card-body">
-            <p class="card-text">Date limite : {{ project.deadline|date('d-m-Y H:i:s') }}</p>
+            <p class="card-text">Deadline le : {{ project.deadline|date('d-m-Y H:i:s') }}</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ project.description}}</li>
-            <li class="list-group-item">Créer le : {{ project.creationDate|date('d-m-Y') }}</li>
+            <li class="list-group-item">Créé le : {{ project.creationDate|date('d-m-Y') }}</li>
             <li class="list-group-item status">{{ project.status }}</li>
           </ul>
           <div class="card-body">

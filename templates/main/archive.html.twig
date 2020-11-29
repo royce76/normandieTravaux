@@ -1,11 +1,11 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Archive{% endblock %}
+{% block title %}Archives{% endblock %}
 
 {% block main %}
   <div class="row">
     <div class="my-4 col-10 mx-auto">
-      <h3 class="text-center">Archive</h3>
+      <h3 class="text-center">Archives</h3>
 
       {% for message in app.flashes('success') %}
           <div class="alert alert-success text-center" role="alert">{{ message }}</div>
