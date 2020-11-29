@@ -5,11 +5,12 @@ for (let article of articles) {
   // target first div contains card
   let divArticle = article.firstElementChild;
   article.addEventListener("mouseover", function(){
-    article.style.backgroundColor = "grey";
-    article.addEventListener("mouseout", function(){
-      article.style.backgroundColor = "initial";
+    article.style.backgroundColor = "initial";
+    document.addEventListener("mouseout", function(){
+      article.style.backgroundColor = "grey";
     });
   });
+
 
   // target the tag h5 to have the name of the project
   let div = divArticle.firstElementChild;
