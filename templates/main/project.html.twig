@@ -17,7 +17,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ project.description}}</li>
-            <li class="list-group-item">Créer le : {{ project.creationDate|date('d-m-Y') }}</li>
+            <li class="list-group-item">Créé le : {{ project.creationDate|date('d-m-Y') }}</li>
             <li class="list-group-item">{{ project.status }}</li>
           </ul>
           <div class="d-flex justify-content-around align-items-center ">
@@ -40,7 +40,6 @@
                 <p class="card-text">{{ task.description}}</p>
                 <a class="btn btn-info" href="{{ path('update_task', {id:task.id})}}">Modifier</a>
                 <a class="btn btn-info" href="{{ path('task_delete', {id:task.id})}}">Supprimer</a>
-                <a href="#" class="card-link">Another link</a>
               </div>
             </article>
           {% else %}
@@ -52,7 +51,6 @@
                 <p class="card-text">{{ task.description}}</p>
                 <a class="btn btn-info" href="{{ path('update_task', {id:task.id})}}">Modifier</a>
                 <a class="btn btn-info" href="{{ path('task_delete', {id:task.id})}}">Supprimer</a>
-                <a href="#" class="card-link">Another link</a>
               </div>
             </article>
           {% endif %}

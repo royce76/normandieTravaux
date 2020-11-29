@@ -34,3 +34,8 @@ Some additional information :
 deadline and a status
 - A task is composed of at least a name, a description, a date of creation,
 a deadline and a status
+
+The goal of this project is to know how to use the SYMFONY framework.
+In order to create an application usable only by a connected user.
+To manage doctrine and front-end.
+Note the make:crud command has not been used.
