@@ -4,6 +4,13 @@ let articles = document.getElementsByTagName("article");
 for (let article of articles) {
   // target first div contains card
   let divArticle = article.firstElementChild;
+  article.addEventListener("mouseover", function(){
+    article.style.backgroundColor = "grey";
+    article.addEventListener("mouseout", function(){
+      article.style.backgroundColor = "initial";
+    });
+  });
+
   // target the tag h5 to have the name of the project
   let div = divArticle.firstElementChild;
   let nameArticle = div.firstElementChild;
@@ -36,12 +43,15 @@ for (let article of articles) {
   });
 }
 
+//target the li with the status of the project
 let status = document.getElementsByClassName("status");
 
 for (var statu of status) {
+  //we go back to target the article
   let ul = statu.parentElement;
   let divArticle = ul.parentElement;
   let article = divArticle.parentElement;
+
   if (statu.innerText === "Terminé") {
     article.style.border = "thick solid green";
   }
