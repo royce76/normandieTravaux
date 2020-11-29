@@ -33,7 +33,6 @@ class MainController extends AbstractController
     {
       $user = $this->getUser();
       $projects = $projectRepository->getProjectsUser($user->getId());
-      dump($projects);
       return $this->render('main/index.html.twig', [
            'projects' => $projects,
        ]);

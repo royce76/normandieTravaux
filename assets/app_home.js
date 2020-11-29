@@ -37,17 +37,15 @@ for (let article of articles) {
 }
 
 let status = document.getElementsByClassName("status");
+
 for (var statu of status) {
-  if (statu.innerText = "Terminé") {
-    let ul = statu.parentElement;
-    let divArticle = ul.parentElement;
-    let article = divArticle.parentElement;
-    article.style.border = "thick solid #0000FF";
+  let ul = statu.parentElement;
+  let divArticle = ul.parentElement;
+  let article = divArticle.parentElement;
+  if (statu.innerText === "Terminé") {
+    article.style.border = "thick solid green";
   }
-  else if (statu.innerText = "En cours") {
-    let ul = statu.parentElement;
-    let divArticle = ul.parentElement;
-    let article = divArticle.parentElement;
-    article.style.border = "thick solid #00FF00";
+  else {
+    article.style.border = "thick solid red";
   }
 }
