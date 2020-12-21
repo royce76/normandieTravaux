@@ -291,9 +291,7 @@ class MainController extends AbstractController
       $entityManager->persist($back_project);
       $entityManager->remove($archive);
       $entityManager->flush();
-      return $this->render('main/test.html.twig', [
-          'archive' => $archive,
-      ]);
+      return $this->redirectToRoute('app_project', ['id' => $back_project->getId()]);
     }
 
 }
